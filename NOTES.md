@@ -70,3 +70,47 @@
             }
         }
     ```
+
+- QUERYING & MUTATING RELATIONAL DATA WITH GRAPHQL IN .NET WEB API:
+    - Notes:[Swagger](https://localhost:44333/swagger/index.html) [GraphQL](https://localhost:44333/ui/graphql)
+    - Adding relational data:
+    ```
+        query {
+	        courses {
+                id
+		        name
+		        description
+		        reviews {
+                    rate
+                    comment
+                }
+		        dateAdded
+                dateUpdated
+            }
+        }
+        mutation{
+          createCourse(course: {
+            name: "GraphQL Course With Relational Data",
+            description: "createCourse",
+            dateAdded: "2022-02-02T21:51:10.7654242Z",
+            dateUpdated: "2022-02-02T21:51:10.7654242Z",
+            reviews: [
+              {
+                rate: 0,
+                comment: "Terrible"
+              },
+			        {
+                rate: 2,
+                comment: "Decent"
+              },
+            ]
+          }) {
+            id
+            name,
+            reviews {
+              id
+              comment
+            }
+          }
+        }
+    ```
